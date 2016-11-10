@@ -1,0 +1,34 @@
+{
+  "name": "cordova-plugin-passcode-check",
+  "version": "0.1.0",
+  "author": "R.E. Moore Jr. <bob.moore@alphasoftware.com>",
+  "description": "Cordova Plugin to check the status of the device passcode.",
+  "cordova": {
+    "id": "cordova-plugin-passcode-check",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remoorejr/cordova-plugin-passcode-check.git"
+  },
+  "keywords": [
+    "cordova",
+    "authentication",
+    "passcode",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remoorejr/cordova-plugin-passcode-check/issues"
+  },
+  "homepage": "https://github.com/remoorejr/cordova-plugin-passcode-check#readme"
+}
