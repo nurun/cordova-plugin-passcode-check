@@ -3,7 +3,7 @@
 //  Copyright (c) 2016 R.E. Moore Jr. - @remoorejr
 //
 
-#import "PascodeCheck.h"
+#import "PasscodeCheck.h"
 
 #import <LocalAuthentication/LocalAuthentication.h>
 
