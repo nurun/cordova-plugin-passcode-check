@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-passcode-check" version="0.1.1">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-passcode-check" version="0.1.2">
     <name>Passcode Check</name>
     <author>R.E. Moore Jr. </author>
-    <description>Cordova Plugin to determine is a passcode has been set for the device</description>
+    <description>Cordova Plugin to determine if a passcode has been set for the device</description>
     <keywords>cordova, passcode</keywords>
     <license>MIT</license>
     <engines>

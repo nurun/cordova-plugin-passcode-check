@@ -7,6 +7,6 @@
 
 @interface PasscodeCheck : CDVPlugin
 
-- (void) devicePasscodeIsSet:(CDVInvokedUrlCommand*)command;
+- (void) isDevicePasscodeSet:(CDVInvokedUrlCommand*)command;
 
 @end

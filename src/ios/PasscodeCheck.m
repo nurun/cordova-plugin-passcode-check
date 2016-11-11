@@ -4,57 +4,28 @@
 //
 
 #import "PasscodeCheck.h"
-
 #import <LocalAuthentication/LocalAuthentication.h>
 
 @implementation PasscodeCheck
 
-- (void) devicePasscodeIsSet:(CDVInvokedUrlCommand*)command;
+- (void) isDevicePasscodeSet:(CDVInvokedUrlCommand*)command;
 {
-    NSString *text = [command.arguments objectAtIndex:0];
+	[self.commandDelegate runInBackground:^{
+		__block CDVPluginResult* pluginResult = nil;
+		NSError *passcodeError = nil;
 
-    __block CDVPluginResult* pluginResult = nil;
-
-    if (NSClassFromString(@"LAContext") != nil)
-    {
-        LAContext *laContext = [[LAContext alloc] init];
-        NSError *passcodeError = nil;
-	
-
-        if ([laContext canEvaluatePolicy: LAPolicyDeviceOwnerAuthentication error: &passcodeError])
-		
-        {
-			[laContext evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason: text reply: ^(BOOL success, NSError *error)
-		
-			{
-				if (success) {
-					pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-				} else {
-					NSString *errorCode =nil;
-					switch (error.code) {
-						case LAErrorSystemCancel:
-							errorCode = @"systemCancel";
-							break;
-						case LAErrorPasscodeNotSet:
-							errorCode = @"passcodeNotSet";
-							break;
-						default:
-							errorCode = @"unknown";
-							break;
-					}
-					pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorCode];
-				}
-				[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-			}];
+		if (NSClassFromString(@"LAContext") != nil) {
+			LAContext *laContext = [[LAContext alloc] init];
+			if ([laContext canEvaluatePolicy: LAPolicyDeviceOwnerAuthentication error: &passcodeError]) {
+				pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:TRUE];
+			} else {
+				pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsBool:FALSE];
+			}
+		} else {
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[passcodeError localizedDescription]];
 		}
-		else
-		{
-			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-		}
-	}
-	
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
 }
 
 @end
