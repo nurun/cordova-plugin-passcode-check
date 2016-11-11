@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-passcode-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "R.E. Moore Jr. <bob.moore@alphasoftware.com>",
   "description": "Cordova Plugin to check the status of the device passcode.",
   "cordova": {
